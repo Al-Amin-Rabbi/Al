@@ -3,7 +3,6 @@ using namespace std;
 int main()
 {
     long long int n,sum;
-    long long int sum1,sum2;
     cin>>n;
     sum=n/2;
     if(n%2==0)
