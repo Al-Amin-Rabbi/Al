@@ -1,34 +1,27 @@
 #include<bits/stdc++.h>
 using namespace std;
-int bigmod(int base,int power,int mod)
+int big_mod(int base, int power, int mod)
 {
-    if(power==0)
+    if(power==0)    return 1;
+    //কোন কিছুর power 0 হলে তার মান 1 হয়ে যায়
+    else if(power%2==1) //power বেজোড় হলে
     {
-        return 1;
+        int p1 = base % mod;
+        int p2 = (big_mod(base,power-1,mod))%mod;
+        return (p1*p2)%mod;
     }
-    else if(power==mod)
+    else if(power%2==0) //power জোড় হলে
     {
-        return 0;
+        int p1 = (big_mod(base,power/2,mod))%mod;
+        return (p1*p1)%mod;
     }
-    else if(power%2==0)
-    {
-        int a=(bigmod(base,power/2,mod)%mod);
-        return (a*a)%mod;
-    }
-    else if(power%2==1)
-    {
-        int a=base%mod;
-        int b=(bigmod(base,power-1,mod)%mod);
-        return (a*b)%mod;
-    }
-
 }
 int main()
 {
     int base=2;
     int power=10000000;
-    int mod=7;
-    cout<<bigmod(base,power,mod)<<endl;
+    int mod=5;
+    cout<<big_mod(base,power,mod)<<endl;
 
 return 0;
 }
