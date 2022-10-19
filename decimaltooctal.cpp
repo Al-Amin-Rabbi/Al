@@ -1,18 +1,14 @@
 #include<bits/stdc++.h>
 using namespace std;
 int main() {
-    vector<int>oc;
-int de,remi,oc_number=0;
+
+int de,i=1,remi,oc_number=0;
 cin>>de;
 while(de!=0){
 remi=de%8;
-oc.push_back(remi);
+oc_number = oc_number +remi*i;
 de=de/8;
-}
-int i=oc.size()-1;
-for(i;i>=0;i--){
-
-    oc_number = oc_number * 10 +oc[i];
+i=i*10;
 }
 cout<<oc_number<<endl;
 return 0;}
